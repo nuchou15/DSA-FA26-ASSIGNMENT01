@@ -20,8 +20,8 @@ fun hasConflictStraightforward(meetings: List<Meeting>): Boolean {
     return false
 }
 // Runtime for the straightforward algorithm should be O(n^2) because you are
-// comparing a meeting with the one before, giving us n(n-1)/2. -
-// As n grows, O(n^2) grows quadratically, which is faster than O(nlogn)
+// checking every pair, eg. comparing each meeting with other meetings,
+// giving us n(n-1)/2 pairs to check. As n grows, O(n^2) grows quadratically.
 
 // Sorts the meetings by their start time and checks for conflicts
 fun hasConflictSorted(meetings: List<Meeting>): Boolean {
@@ -38,4 +38,8 @@ fun hasConflictSorted(meetings: List<Meeting>): Boolean {
     }
     return false
 }
-// Runtime for sorting algorithm will be O(nlogn). As
+// Runtime for sorting algorithm will be O(nlogn). You are sorting first by
+// starting time, then comparing meetings next to each other. The sorting algo
+// takes O(nlogn) and then checking for conflicts will take O(n). The total runtime
+// would be O(nlogn) + O(n), or just O(nlogn). As n grows larger, the sorting
+// algorithm O(nlogn) will grow much slower than the straightforward algorithm (On^2).
